@@ -1,12 +1,76 @@
 <!DOCTYPE html>
 <html lang="Nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechEnvironment</title>
-</head>
-<body>
-    <h1>Business:TechEnvironment</h1>
-    <h2>Members:Mohammed, Jefte, Deaquan</h2>
-</body>
+    <link rel="stylesheet" href="CSS/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/ec319758bc.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script src="JS/main.js" defer></script>
+  </head>
+
+  <body>
+    <main class="dashboard">
+      <section class="Licht--knoppen--card">
+        <div id="js--licht--card" class="Licht--knoppen">
+          <button id="js--light--button--01" class="light--button button--01">
+            <i class="fa-regular fa-lightbulb"></i>
+            <p id="js--button--text--01">off</p>
+          </button>
+          <button id="js--light--button--02" class="light--button button--02">
+            <i class="fa-regular fa-lightbulb"></i>
+            <p id="js--button--text--02">off</p>
+          </button>
+          <button id="js--light--button--03" class="light--button button--03">
+            <i class="fa-regular fa-lightbulb"></i>
+            <p id="js--button--text--03">off</p>
+          </button>
+        </div>
+        <div id="js--airco" class="airco">
+          <div class="roomTemp">
+            <div>
+            <i class="fa-solid fa-house"></i>
+            <p>binnen</p>
+          </div>
+            <div>
+            <i class="fa-solid fa-temperature-empty"></i>
+            <p id="binnenTemp">Unknown</p>
+            </div>
+          </div>
+          <div class="aircoToggled">
+            <p>airco status:</p>
+            <p id="js--airco--status">airco offline</p>
+          </div>
+        </div>
+    </section>
+    <div class="switchButton" >
+      <input type="checkbox" id="js--switch" class="offscreen" />
+      <label for="js--switch" class="switch"></label>
+    </div>
+      <section id="js--grafiek--buitenTemp" class="grafiek--buitenTemp--card">
+        <canvas
+          height="280px"
+          id="js--chart--01"
+          class="grafiek--buitenTemp"
+        ></canvas>
+      </section>
+      <section class="buiten--temp--card">
+        <div class="Buiten--temp">
+          <div class="Buiten--lable">
+            <i class="fa-solid fa-tree"></i>
+            <p>Buiten</p>
+          </div>
+          <div class="Buiten--temp--text">
+            <i class="fa-solid fa-temperature-empty"></i>
+            <p id="js--temp--text"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
