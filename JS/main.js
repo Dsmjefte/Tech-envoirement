@@ -14,7 +14,7 @@ const aircoStatus = document.getElementById("js--airco--status")
 
 
 
-let nodeMCUData=null;
+let nodeMCUData = null;
 
 
 
@@ -114,7 +114,7 @@ Button01.onclick = function () {
     Button01.classList.remove("on")
     isPressed01 = false
   }
-  SendLights();
+  // SendLights();
 }
 Button02.onclick = function () {
   if (isPressed02 == false) {
@@ -129,7 +129,7 @@ Button02.onclick = function () {
     Button02.classList.remove("on")
     isPressed02 = false
   }
-  SendLights();
+  // SendLights();
 }
 Button03.onclick = function () {
   if (isPressed03 == false) {
@@ -145,72 +145,75 @@ Button03.onclick = function () {
     isPressed03 = false
 
   }
-  SendLights();
+  // SendLights();
 }
-SendLights();
+// SendLights();
+setInterval(function () {
+  let LampBestuurder = fetch("https://39613.hosts2.ma-cloud.nl/duurzaamhuis/post.php")
+    .then(function (arduinoData) {
+      return arduinoData.json()
+    })
+    .then(function (actueleArduinoData) {
+      nodeMCUData = actueleArduinoData;
+      console.log(actueleArduinoData)
+      binnentemp.innerHTML = actueleArduinoData.dht11.temp + "°"
+      console.log("Current temp: " + actueleArduinoData.dht11.temp)
+      if (actueleArduinoData.dht11.temp < 19) {
+        aircoStatus.innerHTML = "on"
+      }
+      else {
+        aircoStatus.innerHTML = "off"
 
-let LampBestuurder =fetch("https://39613.hosts2.ma-cloud.nl/duurzaamhuis/post.php")
-  .then(function(arduinoData){
-    return arduinoData.json()
-  })
-  .then(function(actueleArduinoData){
-    nodeMCUData = actueleArduinoData;
-    console.log(actueleArduinoData)
-    binnentemp.innerHTML = actueleArduinoData.dht11.temp + "°"
-    if(actueleArduinoData.dht11.temp < 19){
-      aircoStatus.innerHTML = "on"
-    }
-    else{
-      aircoStatus.innerHTML = "off"
+      }
+    })
+}, 5000)
 
-    }
-  })
+setInterval(function () {
 
-  function SendLights(){
-    if(nodeMCUData == null){
-      console.log("Error")
-      return
-    }
-    nodeMCUData.lights=[ isPressed01, isPressed02, isPressed03] ;
+  if (nodeMCUData == null) {
+    console.log("Error")
+    return
+  }
+  nodeMCUData.lights = [isPressed01, isPressed02, isPressed03];
   fetch("https://39613.hosts2.ma-cloud.nl/duurzaamhuis/post.php", {
     method: "POST",
     body: JSON.stringify(nodeMCUData)//{ "lights": [ isPressed01, isPressed02, isPressed03] }),
-})
-  .then(function(response){
-    return response.json();
   })
-  .then(function(LampActueleData){
-    // console.log(LampActueleData)
-  })
-  ;
-}
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (LampActueleData) {
+      // console.log(LampActueleData)
+    })
+    ;
 
+}, 1000);
 // light buttons van Mohammed code einde\\
 // actuele buitentemp van Mohammed code begin\\
 let BuitenTemp = fetch("https://api.openweathermap.org/data/2.5/weather?lat=52.377956&lon=-4.897070&appid=3035de8e14e4b14c0207acd75a27bdff")
-  .then(function(BuitenTempData){
-   return BuitenTempData.json();
-  }).then(function(BuitenTempActueleData){
+  .then(function (BuitenTempData) {
+    return BuitenTempData.json();
+  }).then(function (BuitenTempActueleData) {
+
     let TempInKelvin = BuitenTempActueleData.main.temp;
     let TempInCelsius = TempInKelvin - 273.15;
     TempText.innerHTML = Math.floor(TempInCelsius) + "°";
-  
   });
-  
+
 // actuele buitentemp van Mohammed code einde\\
 // binnen temp en auto airco van Mohammed code \\
 let toggeld = toggle.checked
 console.log(toggeld)
-toggle.onclick = function(){
-if(toggle.checked == true){
-lightCard.classList.add("NotVissible");
-airco.classList.remove("NotVissible");
-return
-}
-else{
-lightCard.classList.remove("NotVissible"); 
-airco.classList.add("NotVissible");
-}
+toggle.onclick = function () {
+  if (toggle.checked == true) {
+    lightCard.classList.add("NotVissible");
+    airco.classList.remove("NotVissible");
+    return
+  }
+  else {
+    lightCard.classList.remove("NotVissible");
+    airco.classList.add("NotVissible");
+  }
 }
 airco.classList.add("NotVissible");
 
