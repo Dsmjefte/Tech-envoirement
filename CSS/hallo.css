@@ -9,35 +9,33 @@ html {
 }
 
 body{
-    background-color: #2a89ac;
+    background-color: #a0d3e5;
     font-family: sans-serif;
     font-size: 2rem;
-    padding: 3rem;
-    padding-top: 0rem;
 }
 
 header{
-    background-color: #2a89ac;
-
+    background-color: #548496;
     padding: 1rem;
+    padding-top: 0rem;
     height: 7rem;
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 header>div{
     width: 30%;
     height: 100%;
-
 }
 header>div>img{
     width: 100%;
-    max-height:100
 }
 
 .dashboard{
-    min-height: 92vh ;
+    padding: 3rem;
+    max-height: 91vh;
     width: 100% ;
     display: grid;
     grid-template-rows: repeat(12,1fr);
