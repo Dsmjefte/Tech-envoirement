@@ -201,21 +201,3 @@ let BuitenTemp = fetch("https://api.openweathermap.org/data/2.5/weather?lat=52.3
   });
 
 // actuele buitentemp van Mohammed code einde\\
-// binnen temp en auto airco van Mohammed code \\
-let toggeld = toggle.checked
-console.log(toggeld)
-toggle.onclick = function () {
-  if (toggle.checked == true) {
-    lightCard.classList.add("NotVissible");
-    airco.classList.remove("NotVissible");
-    return
-  }
-  else {
-    lightCard.classList.remove("NotVissible");
-    airco.classList.add("NotVissible");
-  }
-}
-airco.classList.add("NotVissible");
-
-
-// binnen temp en auto airco van Mohammed code einde\\

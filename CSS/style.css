@@ -35,10 +35,10 @@ header>div>img{
 
 .dashboard{
     padding: 3rem;
-    max-height: 91vh;
+    min-height: 82.4vh;
     width: 100% ;
     display: grid;
-    grid-template-rows: repeat(12,1fr);
+    grid-template-rows: repeat(9,1fr);
     grid-template-columns: repeat(12,1fr);
     gap: 2rem;
 }
@@ -56,14 +56,27 @@ header>div>img{
     box-shadow: 0 2rem 2.5rem rgba(0, 0, 0, 0.5);
 }
 
+.airco--card{
+    grid-column: 4/7;
+    grid-row: 4/7;
+    border-radius: 5PX;
+    border: 2px solid black;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-evenly;
+    box-shadow: 0 2rem 2.5rem rgba(0, 0, 0, 0.5);
+}
+
 .airco{
-    /* background-color: yellow; */
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     justify-content:space-evenly;
+
 }
 .roomTemp{
     display: flex;
@@ -97,56 +110,6 @@ header>div>img{
     align-items: center;
     flex-direction: column;
 }
-/* begin style voor switch */
-.switchButton{
-    box-shadow: 0 2rem 2.5rem rgba(0, 0, 0, 0.5);
-    grid-row: 1/2;
-    grid-column: 4/5;
-    border-radius: 5PX;
-    border: 2px solid black;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 34px;
-    height: 17px;
-    background-color: rgba(0, 0, 0, 0.25);
-    border-radius: 22px;
-    transition: all 0.3s;
-  }
-  
-  .switch::after {
-    content: '';
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    border-radius: 22px;
-    background-color: white;
-    top: 1px;
-    left: 1px;
-    transition: all 0.3s;
-  }
-  
-  input[type='checkbox']:checked + .switch::after {
-    transform: translateX(14px);
-  }
-  
-  input[type='checkbox']:checked + .switch {
-    background-color: #7983ff;
-  }
-  
-  .offscreen {
-    position: absolute;
-    left: -9999px;
-  }
-
-/* einde style voor switch */
 
 .Licht--knoppen{
     width: 100%;
@@ -158,13 +121,6 @@ header>div>img{
     justify-content: space-evenly;
 }
 
-.Licht--knoppen.NotVissible{
-    display: none;
-}
-
-.airco.NotVissible{
-    display: none;
-}
 
 
 
@@ -229,7 +185,7 @@ header>div>img{
     border: 2px solid black;
     background-color: white;
     grid-row: 1/4;
-    grid-column: 5/7;
+    grid-column: 4/6;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -269,6 +225,17 @@ header>div>img{
 
 .fa-solid{
     font-size: 3rem;
+}
+
+footer{
+    background-color: #548496;
+    height: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+footer>p{
+    color: white;
 }
 
 @media screen and (max-width:74.375rem) {
